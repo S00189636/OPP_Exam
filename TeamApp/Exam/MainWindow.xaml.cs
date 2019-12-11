@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,10 @@ namespace Exam
     /// </summary>
     public partial class MainWindow : Window
     {
+        // used in creating random player
+        ObservableCollection<Player> _allPlayers;
+        ObservableCollection<Player> _selectedPlayers;
+        Random random = new Random();
         public MainWindow()
         {
             InitializeComponent();
@@ -40,6 +45,23 @@ namespace Exam
 
         }
 
-        
+
+        private Player CreatRandomPlayer()
+        {
+            string[] firstnames = {"Liam","Noah","William","James","Oliver","Benjamin","Elijah","Lucas" };
+            string[] lastNames = {"Liam","Noah","William","James","Oliver","Benjamin","Elijah","Lucas" };
+            return new Player()
+            {
+                FirstName = firstnames[random.Next(0, firstnames.Length)],
+                LastName = firstnames[random.Next(0, firstnames.Length)],
+                DOB = new DateTime(random.Next(1990, 2000), random.Next(30), random.Next(12)),
+                PreferredPosition = (Position) random.Next(3)
+            };
+
+        }
+
+
+
+
     }
 }

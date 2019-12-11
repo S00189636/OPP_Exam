@@ -13,5 +13,7 @@ namespace Exam
         public DateTime DOB { get; set; }
         public int Age { get { return DateTime.Now.Subtract(DOB).Days / 365; } }
         public Position PreferredPosition { get; set; }
+
+
     }
 }

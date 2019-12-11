@@ -59,7 +59,7 @@ namespace Exam
             {
                 FirstName = firstnames[random.Next(0, firstnames.Length)],
                 LastName = firstnames[random.Next(0, firstnames.Length)],
-                DOB = new DateTime(random.Next(1990, 2000), random.Next(30), random.Next(12)),
+                DOB = new DateTime(random.Next(1990, 2000), random.Next(1,12), random.Next(1,29)),
                 PreferredPosition = position
             };
 

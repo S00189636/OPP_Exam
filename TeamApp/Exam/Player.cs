@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exam
 {
-    public class Player
+    public class Player : IComparable
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -15,5 +15,21 @@ namespace Exam
         public Position PreferredPosition { get; set; }
 
 
+        // used for sorting
+        public int CompareTo(object obj)
+        {
+            Player tempPlayer = obj as Player;
+
+            if (this.PreferredPosition.CompareTo(tempPlayer.PreferredPosition) == 0)
+                return this.FirstName.CompareTo(tempPlayer.FirstName);
+            else return this.PreferredPosition.CompareTo(tempPlayer.PreferredPosition);
+        }
+
+
+        // this will be used to show the plyer im the list box item
+        public override string ToString()
+        {
+            return string.Format($"{FirstName} {LastName} ({Age}) - {PreferredPosition}");
+        }
     }
 }

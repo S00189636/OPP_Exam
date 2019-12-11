@@ -42,6 +42,7 @@ namespace Exam
             lstbSelectedPlayers.ItemsSource = _selectedPlayers;
             cboxFormating.ItemsSource = comboArray;
             cboxFormating.SelectedIndex = 0;
+            txtbSpaces.Text = _spaces.ToString();
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
@@ -55,9 +56,11 @@ namespace Exam
             {
                 MessageBox.Show("No more spaces", "Adding Error", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
-            }else if (!AddToSelected(playerToAdd))
+            }
+            // if the plyer is aready in the formation don't add and show the player 
+            else if (!AddToSelected(playerToAdd))
             {
-                MessageBox.Show($"You already have {playerToAdd.PreferredPosition}", "Adding Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show($"You already used all the positions for the type {playerToAdd.PreferredPosition}", "Adding Error", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
 
